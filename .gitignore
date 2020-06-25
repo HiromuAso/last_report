@@ -360,5 +360,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Add by Aso Hiromu
-.vs/
-PDCursesLib/
+*.vs/
