@@ -28,6 +28,7 @@ int main()
 	create_maze(maze_information);
 
 	//操作キャラクターの現在地を設定
+	struct charactor my;
 	int char_x = start_x;
 	int char_y = start_y;
 
@@ -38,9 +39,11 @@ int main()
 		
 		//ランダム生成した迷路を表示
 		draw_maze(maze_information);
-		
-		//操作キャラクターを表示
-		draw_charactor();
+
+		//操作キャラクター描画
+		mvaddstr(my.char_y + 1, 2 * my.char_x + 2, "○");
+		//操作キャラクター移動
+		move_charactor(&my, maze_information);
 	
 		//全てを描画
 		refresh();
