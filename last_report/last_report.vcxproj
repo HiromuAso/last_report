@@ -154,7 +154,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="maze.cpp" />
-    <ClCompile Include="Setting.cpp" />
+    <ClCompile Include="charactor.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

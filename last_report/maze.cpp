@@ -23,6 +23,9 @@ void create_maze(int maze[maze_size][maze_size])
 		}
 	}
 
+	//ゴール地点は2にして区別化しておく
+	maze[maze_size - 2][maze_size - 2] = 2;
+
 	//迷路自動生成アルゴリズム
 	for (int y = 0; y < ((maze_size - 3) / 2); y++)
 	{
@@ -115,7 +118,7 @@ void draw_maze(int maze[maze_size][maze_size])
 		for (int x = 0; x < maze_size; x++)
 		{
 			if (maze[x][y] == 1) {
-				mvaddstr(y + 1, 2 * x + 1, "■");
+				mvaddstr(y + 1, 2 * x + 2, "■");
 			}
 		}
 	}

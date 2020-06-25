@@ -7,32 +7,43 @@ int main()
 	initscr();
 	//カーソルを非表示
 	curs_set(0);
+	//キーを押したらすぐにその文字がプログラムから読み取れるようにする
+	cbreak();
+	//入力したキーを画面に表示しないようにする
+	noecho();
+	//矢印キーやファンクションキーなどの特殊キーを利用可能にする
+	keypad(stdscr, TRUE);
 
 	// 色の準備
 	start_color();
 	init_pair(1, COLOR_WHITE, COLOR_BLACK);	// 色1に「白地に黒文字」をセット
-	attrset(COLOR_PAIR(1));			// 色1 を使う
+	attrset(COLOR_PAIR(1));	// 色1 を使う
 
 	//迷路自動生成の2次配列
 	int maze_information[maze_size][maze_size];
-	
-	
+
+	//現在時刻を乱数のシード値に設定 (randの値が固定されるのを防ぐため)
+	srand((unsigned)time(NULL));
+	//迷路ランダム生成
+	create_maze(maze_information);
+
+	//操作キャラクターの現在地を設定
+	int char_x = start_x;
+	int char_y = start_y;
 
 	while (1)
 	{
 		//画面リセット
 		erase();
-
-		//現在時刻を乱数のシード値に設定
-		srand((unsigned)time(NULL));
-
-		create_maze(maze_information);
+		
+		//ランダム生成した迷路を表示
 		draw_maze(maze_information);
-
-		//迷路描画
+		
+		//操作キャラクターを表示
+		draw_charactor();
+	
+		//全てを描画
 		refresh();
-
-		getch();
 	}
 
 	return 0;
