@@ -44,10 +44,12 @@ int main()
 		mvaddstr(my.char_y + 1, 2 * my.char_x + 2, "○");
 		//操作キャラクター移動
 		move_charactor(&my, maze_information);
+
+		//ゴールで終了
+		if (maze_information[my.char_x][my.char_y] == 2) break;
 	
 		//全てを描画
 		refresh();
 	}
-
 	return 0;
 }
