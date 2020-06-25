@@ -1,45 +1,122 @@
 #include "last_report.h"
 
 //迷路を自動生成
-void create_maze(int maze[11][11])
+void create_maze(int maze[maze_size][maze_size])
 {
-	//まず外枠を1で埋める
-	for (int x = 0; x < 11; x++)
+	//一旦全て0で初期化
+	for (int x = 0; x < maze_size; x++)
 	{
-		for (int y = 0; y < 11; y++)
+		for (int y = 0; y < maze_size; y++)
 		{
-			if (x == 0 || x == 9 || y == 0 || y == 9) {
+			maze[x][y] = 0;
+		}
+	}
+
+	//まず外枠を1で埋める
+	for (int x = 0; x < maze_size; x++)
+	{
+		for (int y = 0; y < maze_size; y++)
+		{
+			if (x == 0 || x == maze_size - 1 || y == 0 || y == maze_size - 1) {
 				maze[x][y] = 1;
 			}
 		}
 	}
 
-
-}
-
-//自動生成した迷路を描画
-void draw_maze(int maze[11][11])
-{
-	// 端末の準備
-	initscr();
-	//カーソルを非表示
-	curs_set(0);
-
-	// 色の準備
-	start_color();
-	init_pair(1, COLOR_WHITE, COLOR_BLACK);	// 色1に「白地に黒文字」をセット
-	attrset(COLOR_PAIR(1));			// 色1 を使う
-
-	for (int x = 0; x < 10; x++)
+	//迷路自動生成アルゴリズム
+	for (int y = 0; y < ((maze_size - 3) / 2); y++)
 	{
-		for (int y = 0; y < 10; y++)
+		for (int x = 0; x < ((maze_size - 3) / 2); x++)
 		{
-			if (maze[x][y] == 1) {
-				mvaddstr(y + 10, 2 * x + 10, "■");
+			maze[2 + 2 * x][2 + 2 * y] = 1; //x,y座標を1つ飛ばしに1にする
+			
+			//1行目
+			if (y == 0) 
+			{
+				while (1) {
+					int random = rand() % 4; //0～3の乱数を生成
+
+					if (random == 0)
+					{
+						if (maze[3 + 2 * x][2 + 2 * y] != 1) {
+							maze[3 + 2 * x][2 + 2 * y] = 1; //右を1にする
+							break;
+						}
+					}
+					else if (random == 1)
+					{
+						if (maze[2 + 2 * x][3 + 2 * y] != 1) {
+							maze[2 + 2 * x][3 + 2 * y] = 1; //下を1にする
+							break;
+						}
+					}
+					else if (random == 2)
+					{
+						if (maze[1 + 2 * x][2 + 2 * y] != 1) {
+							maze[1 + 2 * x][2 + 2 * y] = 1; //左を1にする
+							break;
+						}
+					}
+					else if (random == 3)
+					{
+						if (maze[2 + 2 * x][1 + 2 * y] != 1) {
+							maze[2 + 2 * x][1 + 2 * y] = 1; //上を1にする
+							break;
+						}
+					}
+
+				}
+			}
+			//2行目以降 (2行目以降は上にブロックを生成しない)
+			else
+			{
+				while (1)
+				{
+					int random = rand() % 3; //0～2の乱数を生成
+
+					if (random == 0)
+					{
+						if (maze[3 + 2 * x][2 + 2 * y] != 1) {
+							maze[3 + 2 * x][2 + 2 * y] = 1; //右を1にする
+							break;
+						}
+					}
+					else if (random == 1)
+					{
+						if (maze[2 + 2 * x][3 + 2 * y] != 1) {
+							maze[2 + 2 * x][3 + 2 * y] = 1; //下を1にする
+							break;
+						}
+					}
+					else if (random == 2)
+					{
+						if (maze[1 + 2 * x][2 + 2 * y] != 1) {
+							maze[1 + 2 * x][2 + 2 * y] = 1; //左を1にする
+							break;
+						}
+					}
+		
+				}
+
 			}
 		}
 	}
 
-	//迷路描画
-	refresh();
+
+
+
+}
+
+//自動生成した迷路を描画
+void draw_maze(int maze[maze_size][maze_size])
+{
+	for (int y = 0; y < maze_size; y++)
+	{
+		for (int x = 0; x < maze_size; x++)
+		{
+			if (maze[x][y] == 1) {
+				mvaddstr(y + 1, 2 * x + 1, "■");
+			}
+		}
+	}
 }
