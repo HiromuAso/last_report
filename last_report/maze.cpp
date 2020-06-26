@@ -121,4 +121,6 @@ void draw_maze(int maze[maze_size][maze_size])
 			}
 		}
 	}
+
+	mvaddstr(goal_y, 2 * goal_x - 1, "Åú");
 }
