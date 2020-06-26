@@ -1,4 +1,6 @@
-#include "last_report.h"
+//迷路関連のcppファイル
+
+#include "maze_and_character.h"
 
 //迷路を自動生成
 void create_maze(int maze[maze_size][maze_size])
@@ -23,7 +25,7 @@ void create_maze(int maze[maze_size][maze_size])
 		}
 	}
 
-	//ゴール地点は2にして区別化しておく
+	//ゴール地点は2にして壁と区別化しておく
 	maze[maze_size - 2][maze_size - 2] = 2;
 
 	//迷路自動生成アルゴリズム
@@ -104,9 +106,6 @@ void create_maze(int maze[maze_size][maze_size])
 			}
 		}
 	}
-
-
-
 
 }
 

@@ -1,12 +1,15 @@
-﻿#include "last_report.h"
+﻿//操作キャラクター関連のcppファイル
 
-void move_charactor(charactor* my, int maze[maze_size][maze_size])
+#include "maze_and_character.h"
+
+//操作キャラクターを移動
+void move_character(character* my, int maze[maze_size][maze_size])
 {
 	int key = getch(); //文字入力受付
 
 	if (key == KEY_RIGHT)
 	{
-		if (maze[my->char_x + 1][my->char_y] != 1) my->char_x++; //右移動
+		if (maze[my->char_x + 1][my->char_y] != 1) my->char_x++; //移動先に壁がなければ右移動
 	}
 	if (key == KEY_LEFT)
 	{

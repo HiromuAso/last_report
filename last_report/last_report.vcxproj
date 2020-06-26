@@ -153,12 +153,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ini_Setting.cpp" />
     <ClCompile Include="maze.cpp" />
-    <ClCompile Include="charactor.cpp" />
+    <ClCompile Include="character.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="last_report.h" />
+    <ClInclude Include="ini_Setting.h" />
+    <ClInclude Include="maze_and_character.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
