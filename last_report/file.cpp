@@ -33,7 +33,7 @@ bool fileoutput(int x)
 	data[0] = atoi(p_work) + 1;
 
 	p_work = strtok_s(NULL, s_delim, &s); //「ハイスコア」
-	p_work = strtok_s(NULL, s_delim, &s); //「～100」(小さい方が良い)
+	p_work = strtok_s(NULL, s_delim, &s); //「～9999」(小さい方が良い)
 
 	data[1] = atoi(p_work);
 

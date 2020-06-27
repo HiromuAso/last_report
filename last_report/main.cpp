@@ -125,7 +125,13 @@ int main()
 		return 0;
 	}
 
-	free(maze_information); //動的メモリ解放
+	//動的メモリ解放
+	for (int i = 0; i < maze_size_ini; i++)
+	{
+		free(maze_information[i]);
+	}
+	free(maze_information);
+
 	endwin(); //端末制御終了
 	return 0;
 }
