@@ -18,7 +18,7 @@ int main()
 	char settingFile[CHARBUFF];
 	sprintf_s(settingFile, "%s\\Setting.ini", currentDirectory);
 
-	//迷路の一辺の長さ(必ず奇数にする必要あり,コンソールデフォルトの大きさの都合上
+	//迷路の一辺の長さ(必ず奇数にする必要あり,コンソールのデフォの大きさの都合上
 	//29より大きくすると表示が乱れる)
 	int maze_size_ini = readInt("maze_size", "size", -1, settingFile);
 
@@ -37,11 +37,10 @@ int main()
 	start_color();
 	init_pair(1, COLOR_WHITE, COLOR_BLACK);	// 色1に「黒地に白文字」をセット
 	init_pair(2, COLOR_RED, COLOR_BLACK);	// 色2に「黒地に赤文字」をセット
-	init_pair(3, COLOR_GREEN, COLOR_BLACK);	// 色2に「黒地に緑文字」をセット
+	init_pair(3, COLOR_GREEN, COLOR_BLACK);	// 色3に「黒地に緑文字」をセット
 	attrset(COLOR_PAIR(1) | A_BOLD);	// 色1 を使う + 太字にする
 
-	//迷路自動生成の2次配列
-	//int maze_information[maze_size_ini][maze_size_ini];
+	//迷路自動生成の2次配列 (動的メモリ確保)
 	int** maze_information;
 	maze_information = (int**)malloc(sizeof(int*) * maze_size_ini);
 	for (int i = 0; i < maze_size_ini; i++)
@@ -100,7 +99,7 @@ int main()
 	mvaddstr(2, 2 * maze_size_ini + 8, "You  = ○");
 	mvaddstr(3, 2 * maze_size_ini + 8, "Goal = ");
 
-	attrset(COLOR_PAIR(3) | A_BOLD);
+	attrset(COLOR_PAIR(3) | A_BOLD); // 色3 を使う + 太字にする
 	mvaddstr(3, 2 * maze_size_ini + 15, "●");
 	mvaddstr(my.char_y + 1, 2 * my.char_x + 8, "Goal!!");
 
@@ -119,14 +118,14 @@ int main()
 		if (end_key == 'q') break; //'q'キーを押したら終了
 	}
 
-	//csvファイルを開いて,クリア回数をスコアを更新
+	//csvファイルを開いて,クリア回数とスコアを更新
 	if (fileoutput(count) == false)
 	{
 		MessageBox(NULL, _T("csvファイル読み込みに失敗しました"), _T("エラー"), MB_OK | MB_TOPMOST);
 		return 0;
 	}
 
-
+	free(maze_information); //動的メモリ解放
 	endwin(); //端末制御終了
 	return 0;
 }

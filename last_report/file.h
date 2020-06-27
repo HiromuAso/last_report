@@ -1,3 +1,5 @@
+//ファイル入出力関連のヘッダーファイル
+
 #pragma once
 
 #include <stdio.h>

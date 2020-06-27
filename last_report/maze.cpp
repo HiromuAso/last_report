@@ -5,7 +5,7 @@
 //迷路を自動生成
 void create_maze(int** maze, int maze_size)
 { 
-	//一旦全て0で初期化
+	//一旦全て属性0で初期化
 	for (int x = 0; x < maze_size; x++)
 	{
 		for (int y = 0; y < maze_size; y++)
@@ -14,7 +14,7 @@ void create_maze(int** maze, int maze_size)
 		}
 	}
 
-	//まず外枠を1で埋める
+	//まず外枠を属性1で埋める
 	for (int x = 0; x < maze_size; x++)
 	{
 		for (int y = 0; y < maze_size; y++)
@@ -25,7 +25,7 @@ void create_maze(int** maze, int maze_size)
 		}
 	}
 
-	//ゴール地点は2にして壁と区別化しておく
+	//ゴール地点は属性を2にして属性1の壁と区別化しておく
 	maze[maze_size - 2][maze_size - 2] = 2;
 
 	//迷路自動生成アルゴリズム

@@ -1,3 +1,5 @@
+//ファイル入出力関連のcppファイル
+
 #include "file.h"
 
 //セーブデータ(csv)へクリア回数(+ハイスコア)をアウトプットする
@@ -15,17 +17,15 @@ bool fileoutput(int x)
 	//クリア回数とハイスコア
 	int data[2];
 
-	//ファイルオープン
 	FILE* fp;
 	char buf[BUFFSIZE];
-
-	errno_t error = fopen_s(&fp, inputdata, "r"); //読み取りとして開く
-	if (error != 0)  return false;
-
 	char s_delim[] = ",";  // 区切り文字
 	char* s;
-	
+
 	//読み込み開始
+	errno_t error = fopen_s(&fp, inputdata, "r"); //読み取りとして開く
+	if (error != 0)  return false;
+	
 	fgets(buf, BUFFSIZE, fp);
 	char* p_work = strtok_s(buf, s_delim, &s); //「クリア回数」
 	p_work = strtok_s(NULL, s_delim, &s); //「0～」
@@ -47,12 +47,12 @@ bool fileoutput(int x)
 	char s_buf[BUFFSIZE];
 	if (x < data[1])
 	{
-		sprintf_s(s_buf, "クリア回数,%d,ハイスコア,%d", data[0], x);
+		sprintf_s(s_buf, "Clear_count,%d,Highscore,%d", data[0], x);
 		fputs(s_buf, fp);
 	}
 	else
 	{
-		sprintf_s(s_buf, "クリア回数,%d,ハイスコア,%d", data[0], data[1]);
+		sprintf_s(s_buf, "Clear_count,%d,Highscore,%d", data[0], data[1]);
 		fputs(s_buf, fp);
 	}
 

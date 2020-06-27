@@ -18,10 +18,6 @@ typedef struct character {
 	int char_y = start_y;
 };
 
-//迷路の一辺の長さ(必ず奇数にする必要あり,コンソールデフォルトの大きさの都合上
-//29より大きくすると表示が乱れる)
-//const int maze_size = 5; //デフォルト値
-
 //関数プロトタイプ宣言
 void create_maze(int** maze, int maze_size);
 void draw_maze(int** maze, int maze_size);

@@ -2,7 +2,7 @@
 
 #include "ini_Setting.h"
 
-//iniファイルからint型変数を入力
+//iniファイルからint型変数を参照
 int readInt(const char* section, const char* keyword, int defaultValue, const char* filePath)
 {
 	return GetPrivateProfileInt(section, keyword, defaultValue, filePath);
