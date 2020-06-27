@@ -3,7 +3,7 @@
 #include "maze_and_character.h"
 
 //操作キャラクターを移動
-void move_character(character* my, int maze[maze_size][maze_size])
+void move_character(character* my, int** maze)
 {
 	int key = getch(); //文字入力受付
 

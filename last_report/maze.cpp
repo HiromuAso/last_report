@@ -3,8 +3,8 @@
 #include "maze_and_character.h"
 
 //–À˜H‚ğ©“®¶¬
-void create_maze(int maze[maze_size][maze_size])
-{
+void create_maze(int** maze, int maze_size)
+{ 
 	//ˆê’U‘S‚Ä0‚Å‰Šú‰»
 	for (int x = 0; x < maze_size; x++)
 	{
@@ -110,7 +110,7 @@ void create_maze(int maze[maze_size][maze_size])
 }
 
 //©“®¶¬‚µ‚½–À˜H‚ğ•`‰æ
-void draw_maze(int maze[maze_size][maze_size])
+void draw_maze(int** maze, int maze_size)
 {
 	for (int y = 0; y < maze_size; y++)
 	{
@@ -122,5 +122,4 @@ void draw_maze(int maze[maze_size][maze_size])
 		}
 	}
 
-	mvaddstr(goal_y, 2 * goal_x - 1, "œ");
 }
