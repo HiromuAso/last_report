@@ -72,16 +72,16 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\hirom\OneDrive\デスクトップ\last_report\last_report\PDCursesLib\PDCursesLib\include</IncludePath>
-    <LibraryPath>C:\Users\hirom\OneDrive\デスクトップ\last_report\last_report\PDCursesLib\PDCursesLib\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)PDCursesLib\include</IncludePath>
+    <LibraryPath>$(SolutionDir)PDCursesLib\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\hirom\OneDrive\デスクトップ\last_report\last_report\PDCursesLib\PDCursesLib\include</IncludePath>
-    <LibraryPath>C:\Users\hirom\OneDrive\デスクトップ\last_report\last_report\PDCursesLib\PDCursesLib\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)PDCursesLib\include</IncludePath>
+    <LibraryPath>$(SolutionDir)PDCursesLib\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
